@@ -4,18 +4,27 @@
 #
 Name     : mvn-checkerframework
 Version  : 2.0.0
-Release  : 1
-URL      : https://repo1.maven.org/maven2/org/checkerframework/checker-qual/2.0.0/checker-qual-2.0.0-sources.jar
-Source0  : https://repo1.maven.org/maven2/org/checkerframework/checker-qual/2.0.0/checker-qual-2.0.0-sources.jar
-Source1  : https://repo1.maven.org/maven2/org/checkerframework/checker-qual/2.0.0/checker-qual-2.0.0.jar
-Source2  : https://repo1.maven.org/maven2/org/checkerframework/checker-qual/2.0.0/checker-qual-2.0.0.pom
+Release  : 3
+URL      : https://github.com/typetools/checker-framework/releases/download/checker-framework-2.0.0/checker-framework-2.0.0.zip
+Source0  : https://github.com/typetools/checker-framework/releases/download/checker-framework-2.0.0/checker-framework-2.0.0.zip
+Source1  : https://repo1.maven.org/maven2/org/checkerframework/checker-qual/2.0.0/checker-qual-2.0.0-sources.jar
+Source2  : https://repo1.maven.org/maven2/org/checkerframework/checker-qual/2.0.0/checker-qual-2.0.0.jar
+Source3  : https://repo1.maven.org/maven2/org/checkerframework/checker-qual/2.0.0/checker-qual-2.0.0.pom
 Summary  : No detailed summary available
 Group    : Development/Tools
-License  : Apache-1.0
+License  : GPL-2.0 MIT
 Requires: mvn-checkerframework-data = %{version}-%{release}
+BuildRequires : apache-maven
+BuildRequires : buildreq-mvn
 
 %description
-No detailed description available
+This directory shows how to create:
+* a new kind, @Frequency
+* a new unit, Hertz (@Hz)
+* a unit Kilohertz (@kHz) which is an alias annotation of @Hz(Prefix.kilo):
+using @kHz has the same effect as using @Hz(Prefix.kilo) in source code
+* relations that enforce that Hertz is computed as scalar / second,
+and that Kilohertz is computed as scalar / millisecond
 
 %package data
 Summary: data components for the mvn-checkerframework package.
@@ -26,19 +35,19 @@ data components for the mvn-checkerframework package.
 
 
 %prep
-%setup -q -n META-INF
+%setup -q -n checker-framework-2.0.0
 
 %build
 
 %install
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/checkerframework/checker-qual/2.0.0
-cp %{SOURCE0} %{buildroot}/usr/share/java/.m2/repository/org/checkerframework/checker-qual/2.0.0/checker-qual-2.0.0-sources.jar
+cp %{SOURCE1} %{buildroot}/usr/share/java/.m2/repository/org/checkerframework/checker-qual/2.0.0/checker-qual-2.0.0-sources.jar
 
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/checkerframework/checker-qual/2.0.0
-cp %{SOURCE1} %{buildroot}/usr/share/java/.m2/repository/org/checkerframework/checker-qual/2.0.0/checker-qual-2.0.0.jar
+cp %{SOURCE2} %{buildroot}/usr/share/java/.m2/repository/org/checkerframework/checker-qual/2.0.0/checker-qual-2.0.0.jar
 
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/checkerframework/checker-qual/2.0.0
-cp %{SOURCE2} %{buildroot}/usr/share/java/.m2/repository/org/checkerframework/checker-qual/2.0.0/checker-qual-2.0.0.pom
+cp %{SOURCE3} %{buildroot}/usr/share/java/.m2/repository/org/checkerframework/checker-qual/2.0.0/checker-qual-2.0.0.pom
 
 
 %files

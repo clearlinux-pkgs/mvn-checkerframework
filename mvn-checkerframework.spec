@@ -4,7 +4,7 @@
 #
 Name     : mvn-checkerframework
 Version  : 2.0.0
-Release  : 4
+Release  : 5
 URL      : https://github.com/typetools/checker-framework/releases/download/checker-framework-2.0.0/checker-framework-2.0.0.zip
 Source0  : https://github.com/typetools/checker-framework/releases/download/checker-framework-2.0.0/checker-framework-2.0.0.zip
 Source1  : https://repo1.maven.org/maven2/org/checkerframework/checker-qual/2.0.0/checker-qual-2.0.0-sources.jar
@@ -14,8 +14,9 @@ Source4  : https://repo1.maven.org/maven2/org/checkerframework/checker-qual/2.5.
 Source5  : https://repo1.maven.org/maven2/org/checkerframework/checker-qual/2.5.2/checker-qual-2.5.2.pom
 Summary  : No detailed summary available
 Group    : Development/Tools
-License  : GPL-2.0 MIT
+License  : EPL-1.0 GPL-2.0 MIT
 Requires: mvn-checkerframework-data = %{version}-%{release}
+Requires: mvn-checkerframework-license = %{version}-%{release}
 BuildRequires : apache-maven
 BuildRequires : buildreq-mvn
 
@@ -36,12 +37,22 @@ Group: Data
 data components for the mvn-checkerframework package.
 
 
+%package license
+Summary: license components for the mvn-checkerframework package.
+Group: Default
+
+%description license
+license components for the mvn-checkerframework package.
+
+
 %prep
 %setup -q -n checker-framework-2.0.0
 
 %build
 
 %install
+mkdir -p %{buildroot}/usr/share/package-licenses/mvn-checkerframework
+cp LICENSE.txt %{buildroot}/usr/share/package-licenses/mvn-checkerframework/LICENSE.txt
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/checkerframework/checker-qual/2.0.0
 cp %{SOURCE1} %{buildroot}/usr/share/java/.m2/repository/org/checkerframework/checker-qual/2.0.0/checker-qual-2.0.0-sources.jar
 
@@ -68,3 +79,7 @@ cp %{SOURCE5} %{buildroot}/usr/share/java/.m2/repository/org/checkerframework/ch
 /usr/share/java/.m2/repository/org/checkerframework/checker-qual/2.0.0/checker-qual-2.0.0.pom
 /usr/share/java/.m2/repository/org/checkerframework/checker-qual/2.5.2/checker-qual-2.5.2.jar
 /usr/share/java/.m2/repository/org/checkerframework/checker-qual/2.5.2/checker-qual-2.5.2.pom
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/mvn-checkerframework/LICENSE.txt

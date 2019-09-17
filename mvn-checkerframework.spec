@@ -4,12 +4,14 @@
 #
 Name     : mvn-checkerframework
 Version  : 2.0.0
-Release  : 3
+Release  : 4
 URL      : https://github.com/typetools/checker-framework/releases/download/checker-framework-2.0.0/checker-framework-2.0.0.zip
 Source0  : https://github.com/typetools/checker-framework/releases/download/checker-framework-2.0.0/checker-framework-2.0.0.zip
 Source1  : https://repo1.maven.org/maven2/org/checkerframework/checker-qual/2.0.0/checker-qual-2.0.0-sources.jar
 Source2  : https://repo1.maven.org/maven2/org/checkerframework/checker-qual/2.0.0/checker-qual-2.0.0.jar
 Source3  : https://repo1.maven.org/maven2/org/checkerframework/checker-qual/2.0.0/checker-qual-2.0.0.pom
+Source4  : https://repo1.maven.org/maven2/org/checkerframework/checker-qual/2.5.2/checker-qual-2.5.2.jar
+Source5  : https://repo1.maven.org/maven2/org/checkerframework/checker-qual/2.5.2/checker-qual-2.5.2.pom
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0 MIT
@@ -49,6 +51,12 @@ cp %{SOURCE2} %{buildroot}/usr/share/java/.m2/repository/org/checkerframework/ch
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/checkerframework/checker-qual/2.0.0
 cp %{SOURCE3} %{buildroot}/usr/share/java/.m2/repository/org/checkerframework/checker-qual/2.0.0/checker-qual-2.0.0.pom
 
+mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/checkerframework/checker-qual/2.5.2
+cp %{SOURCE4} %{buildroot}/usr/share/java/.m2/repository/org/checkerframework/checker-qual/2.5.2/checker-qual-2.5.2.jar
+
+mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/checkerframework/checker-qual/2.5.2
+cp %{SOURCE5} %{buildroot}/usr/share/java/.m2/repository/org/checkerframework/checker-qual/2.5.2/checker-qual-2.5.2.pom
+
 
 %files
 %defattr(-,root,root,-)
@@ -58,3 +66,5 @@ cp %{SOURCE3} %{buildroot}/usr/share/java/.m2/repository/org/checkerframework/ch
 /usr/share/java/.m2/repository/org/checkerframework/checker-qual/2.0.0/checker-qual-2.0.0-sources.jar
 /usr/share/java/.m2/repository/org/checkerframework/checker-qual/2.0.0/checker-qual-2.0.0.jar
 /usr/share/java/.m2/repository/org/checkerframework/checker-qual/2.0.0/checker-qual-2.0.0.pom
+/usr/share/java/.m2/repository/org/checkerframework/checker-qual/2.5.2/checker-qual-2.5.2.jar
+/usr/share/java/.m2/repository/org/checkerframework/checker-qual/2.5.2/checker-qual-2.5.2.pom
